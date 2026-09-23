@@ -1,10 +1,39 @@
-# editor
+# local-only project notes (not for the repo)
+AGENTS.md
+
+# editors / IDEs
 .vscode
 .idea
-# temp
+*.iml
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# temp / OS
 .DS_Store
 Thumbs.db
+*.tmp
+*.bak
+*.orig
+*.rej
+*~
 
-#python
-__pycache__
-*.pyc
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# runtime junk (test runs, kodi profiles, sonar)
+*.db
+*.log
+.scannerwork/
+.sonar/

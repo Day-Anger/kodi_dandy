@@ -61,7 +61,13 @@ def compress_zip(src_path, dst_file):
     root = os.path.basename(src_path)
     with ZipFile(dst_file, 'w') as file:
         for folder_name, sub_folders, filenames in os.walk(src_path):
+            # keep release zips lean: never ship tests, analysis configs or bytecode
+            for skipped in ('tests', '__pycache__'):
+                if skipped in sub_folders:
+                    sub_folders.remove(skipped)
             for filename in filenames:
+                if filename == 'sonar-project.properties' or filename.endswith('.pyc'):
+                    continue
                 full_path = os.path.join(folder_name, filename)
                 file.write(full_path, os.path.join(root, str(full_path.split(root)[-1])[1:]))
     return dst_file
